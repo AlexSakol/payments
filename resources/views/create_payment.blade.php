@@ -36,6 +36,6 @@
                 </label>
             </div>
         </div>
-        <input class="btn btn-info" type="submit" value="Добавить">
+        <input class="btn btn-success" type="submit" value="Добавить">
     </form>
 @endsection

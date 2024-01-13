@@ -21,6 +21,8 @@ Route::get('/myPayments', [PaymentsController::class, 'getPayments'])->name('pay
 Route::get('/createPayment', [PaymentsController::class, 'addPaymentView'])->name('create_payment');
 Route::post('/addPayment', [PaymentsController::class, 'addPayment'])->name('add_payment');
 Route::post('/deletePayment', [PaymentsController::class, 'deletePayment'])->name('delete_payment');
+Route::get('/editPayment/{id}', [PaymentsController::class, 'editPaymentView'])->name('edit_payment');
+Route::post('/editPayment/{id}/updatePayment', [PaymentsController::class, 'updatePayment'])->name('update_payment');
 
 
 Route::get('/dashboard', function () {

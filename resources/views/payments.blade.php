@@ -20,7 +20,7 @@
                     <td>{{$payment->date}}</td>
                     <td>{{$payment->category->name}}</td>
                     <td>{{$payment->type->name}}</td>
-                    <td><a class="btn btn-outline-info" href="#">Редактировать</a></td>
+                    <td><a class="btn btn-outline-info" href="{{route('edit_payment', $payment->id)}}">Редактировать</a></td>
                     <td>
                         <form method="POST" action="{{route('delete_payment')}}">
                             @csrf

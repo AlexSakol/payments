@@ -7,6 +7,8 @@ use App\Models\Payment;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\View\View;
 
 
 class PaymentsController extends Controller
@@ -44,6 +46,35 @@ class PaymentsController extends Controller
     public function deletePayment(Request $request)
     {
         Payment::destroy($request->input('id'));
+        return redirect()->route('payments');
+    }
+
+    public function editPaymentView(int $id)
+    {
+        $payment = Payment::find($id);
+        if($payment != null)
+        {
+            $categories = Category::all();
+            return view('edit_payment', ['payment' => $payment, 'categories' => $categories]);
+        }
+        else
+        {
+            return redirect()->route('payments');
+        }
+    }
+
+    public function updatePayment(int $id, Request $request)
+    {
+        $payment = Payment::find($id);
+        if($payment != null)
+        {
+            $payment->name = $request->input('name');
+            $payment->price = $request->input('price');
+            $payment->date = $request->input('date');
+            $payment->category_id = $request->input('category_id');
+            $payment->type_id = $request->input('type_id');
+            $payment->save();
+        }
         return redirect()->route('payments');
     }
 }
