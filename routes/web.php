@@ -2,7 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use \App\Http\Controllers\MainController;
+use App\Http\Controllers\MainController;
+use App\Http\Controllers\PaymentsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +17,7 @@ use \App\Http\Controllers\MainController;
 */
 
 Route::get('/', [MainController::class,'show'])->name('main');
+Route::get('/mypayments', [PaymentsController::class, 'getPayments'])->name('payments');
 
 
 Route::get('/dashboard', function () {
