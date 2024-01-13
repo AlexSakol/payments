@@ -17,8 +17,9 @@ use App\Http\Controllers\PaymentsController;
 */
 
 Route::get('/', [MainController::class,'show'])->name('main');
-Route::get('/mypayments', [PaymentsController::class, 'getPayments'])->name('payments');
-
+Route::get('/myPayments', [PaymentsController::class, 'getPayments'])->name('payments');
+Route::get('/createPayment', [PaymentsController::class, 'addPaymentView'])->name('create_payment');
+Route::post('/addPayment', [PaymentsController::class, 'addPayment'])->name('add_payment');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

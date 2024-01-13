@@ -3,8 +3,7 @@
 @section('title')Платежи@endsection
 
 @section('content')
-    <div class="container">
-        <h3>Мои платежи</h3>
+    <h3>Мои платежи</h3>
         <table class="table table-striped">
             <tr>
                 <th>Наименование</th>
@@ -23,5 +22,5 @@
                 </tr>
             @endforeach
         </table>
-    </div>
+        <a class="btn btn-success" href="{{route('create_payment')}}">Добавить</a>
 @endsection

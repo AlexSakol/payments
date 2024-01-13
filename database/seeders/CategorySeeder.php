@@ -39,7 +39,7 @@ class CategorySeeder extends Seeder
                 'name' => 'Сдача в аренду'
             ],
             [
-            'name' => 'Прочее'
+                'name' => 'Прочее'
             ]
         ]);
     }
