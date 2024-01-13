@@ -11,6 +11,7 @@
                 <th>Дата</th>
                 <th>Категория</th>
                 <th>Доход/расход</th>
+                <th></th><th></th>
             </tr>
             @foreach($payments as $payment)
                 <tr>
@@ -19,6 +20,14 @@
                     <td>{{$payment->date}}</td>
                     <td>{{$payment->category->name}}</td>
                     <td>{{$payment->type->name}}</td>
+                    <td><a class="btn btn-outline-info" href="#">Редактировать</a></td>
+                    <td>
+                        <form method="POST" action="{{route('delete_payment')}}">
+                            @csrf
+                            <input type="hidden" name="id" value="{{$payment->id}}">
+                            <input class="btn btn-outline-danger" type="submit" value="Удалить">
+                        </form>
+                    </td>
                 </tr>
             @endforeach
         </table>

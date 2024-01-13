@@ -19,7 +19,7 @@ class PaymentsController extends Controller
             $payments = $user->payments;
             return view('payments', ['payments' => $payments]);
         }
-        else return redirect(route('main'));
+        else return redirect()->route('main');
     }
 
     public function addPaymentView()
@@ -32,12 +32,18 @@ class PaymentsController extends Controller
     {
         $payment = new Payment();
         $payment->user_id = Auth::user()->id;
-        $payment->name = $request['name'];
-        $payment->price = $request['price'];
-        $payment->date = $request['date'];
-        $payment->category_id = $request['category_id'];
-        $payment->type_id = $request['type_id'];
+        $payment->name = $request->input('name');
+        $payment->price = $request->input('price');
+        $payment->date = $request->input('date');
+        $payment->category_id = $request->input('category_id');
+        $payment->type_id = $request->input('type_id');
         $payment->save();
-        return redirect(route('payments'));
+        return redirect()->route('payments');
+    }
+
+    public function deletePayment(Request $request)
+    {
+        Payment::destroy($request->input('id'));
+        return redirect()->route('payments');
     }
 }

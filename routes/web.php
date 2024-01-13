@@ -20,6 +20,8 @@ Route::get('/', [MainController::class,'show'])->name('main');
 Route::get('/myPayments', [PaymentsController::class, 'getPayments'])->name('payments');
 Route::get('/createPayment', [PaymentsController::class, 'addPaymentView'])->name('create_payment');
 Route::post('/addPayment', [PaymentsController::class, 'addPayment'])->name('add_payment');
+Route::post('/deletePayment', [PaymentsController::class, 'deletePayment'])->name('delete_payment');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
