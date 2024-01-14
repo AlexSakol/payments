@@ -19,7 +19,7 @@
             <select class="form-select" name="category_id" aria-label="Default select example">
                 @foreach($categories as $category)
                     <option value="{{$category->id}}"
-                    @if($category->id === $payment->category_id)
+                    @if($category->id == $payment->category_id)
                         selected
                         @endif>
                         {{$category->name}}
