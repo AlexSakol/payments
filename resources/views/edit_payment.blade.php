@@ -29,8 +29,8 @@
         </div>
         <div class="form-group mt-3 mb-3">
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="type_id" id="type" value="1"
-                       @if($payment->type_id === 1)
+                <input class="form-check-input" type="radio" name="is_income" id="type" value="1"
+                       @if($payment->is_income == true)
                             checked
                        @endif>
                 <label class="form-check-label" for="type">
@@ -38,8 +38,8 @@
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="type_id" id="type" value="2"
-                       @if($payment->type_id === 2)
+                <input class="form-check-input" type="radio" name="is_income" id="type" value="0"
+                       @if($payment->is_income == false)
                            checked
                        @endif>
                 <label class="form-check-label" for="type">

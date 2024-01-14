@@ -16,9 +16,9 @@ return new class extends Migration
             $table->string('name');
             $table->date('date');
             $table->decimal('price');
+            $table->boolean('is_income');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('category_id')->constrained();
-            $table->foreignId('type_id')->constrained();
         });
     }
 

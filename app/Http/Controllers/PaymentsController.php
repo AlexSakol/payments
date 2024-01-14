@@ -38,7 +38,7 @@ class PaymentsController extends Controller
         $payment->price = $request->input('price');
         $payment->date = $request->input('date');
         $payment->category_id = $request->input('category_id');
-        $payment->type_id = $request->input('type_id');
+        $payment->is_income = $request->input('is_income');
         $payment->save();
         return redirect()->route('payments');
     }
@@ -72,7 +72,7 @@ class PaymentsController extends Controller
             $payment->price = $request->input('price');
             $payment->date = $request->input('date');
             $payment->category_id = $request->input('category_id');
-            $payment->type_id = $request->input('type_id');
+            $payment->is_income = $request->input('is_income');
             $payment->save();
         }
         return redirect()->route('payments');

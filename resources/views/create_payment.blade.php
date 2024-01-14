@@ -24,13 +24,13 @@
         </div>
         <div class="form-group mt-3 mb-3">
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="type_id" id="type" value="1" checked>
+                <input class="form-check-input" type="radio" name="is_income" id="type" value="1" checked>
                 <label class="form-check-label" for="type">
                     Доход
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="type_id" id="type" value="2">
+                <input class="form-check-input" type="radio" name="is_income" id="type" value="0">
                 <label class="form-check-label" for="type">
                     Расход
                 </label>

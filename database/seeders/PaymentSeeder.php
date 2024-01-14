@@ -18,25 +18,25 @@ class PaymentSeeder extends Seeder
                 'name' => 'Бензин',
                 'date' => '2024-01-04',
                 'price' => 50.50,
+                'is_income' => true,
                 'user_id' => 1,
-                'category_id' => 1,
-                'type_id' => 2
+                'category_id' => 1
             ],
             [
                 'name' => 'Аванс',
                 'date' => '2024-01-05',
                 'price' => 500,
+                'is_income' => false,
                 'user_id' => 1,
-                'category_id' => 6,
-                'type_id' => 1
+                'category_id' => 6
             ],
             [
                 'name' => 'Фрукты',
                 'date' => '2024-01-07',
                 'price' => 30.60,
+                'is_income' => true,
                 'user_id' => 1,
-                'category_id' => 2,
-                'type_id' => 2
+                'category_id' => 2
             ]
         ]);
     }
