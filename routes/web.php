@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\PaymentsController;
+use App\Http\Controllers\LimitsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,7 @@ Route::post('/addPayment', [PaymentsController::class, 'addPayment'])->name('add
 Route::post('/deletePayment', [PaymentsController::class, 'deletePayment'])->name('delete_payment');
 Route::get('/editPayment/{id}', [PaymentsController::class, 'editPaymentView'])->name('edit_payment');
 Route::post('/editPayment/{id}/updatePayment', [PaymentsController::class, 'updatePayment'])->name('update_payment');
+Route::get('myLimits', [LimitsController::class, 'getLimits'])->name('limits');
 
 
 Route::get('/dashboard', function () {

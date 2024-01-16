@@ -25,13 +25,7 @@ class LimitSeeder extends Seeder
                'end_date' => '2024-01-31',
                'price' => 1000,
                'user_id' => 2
-           ],
-           [
-               'start_date' => '2024-01-01',
-               'end_date' => '2024-01-31',
-               'price' => 50,
-               'user_id' => 3
-           ],
+           ]
         ]);
     }
 }

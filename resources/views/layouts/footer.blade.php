@@ -2,7 +2,12 @@
     <ul class="nav justify-content-center border-bottom pb-3 mb-3">
         <li class="nav-item"><a href="/" class="nav-link px-2 text-body-secondary">Главная</a></li>
         @auth()
-        <li class="nav-item"><a href="{{route('payments')}}" class="nav-link px-2 text-body-secondary">Мои платежи</a></li>
+            <li class="nav-item">
+                <a href="{{route('payments')}}" class="nav-link px-2 text-body-secondary">Мои платежи</a>
+            </li>
+            <li class="nav-item">
+                <a href="{{route('limits')}}" class="nav-link px-2 text-body-secondary">Мои лимиты</a>
+            </li>
         @endauth
         @guest()
         <li class="nav-item"><a href="{{route('login')}}" class="nav-link px-2 text-body-secondary">Войти</a></li>

@@ -61,22 +61,6 @@ class PaymentSeeder extends Seeder
                 'is_income' => true,
                 'user_id' => 2,
                 'category_id' => 8
-            ],
-            [
-                'name' => 'Буфет',
-                'date' => '2024-01-05',
-                'price' => 3.50,
-                'is_income' => false,
-                'user_id' => 3,
-                'category_id' => 2
-            ],
-            [
-                'name' => 'Шоколадка',
-                'date' => '2024-01-10',
-                'price' => 1.45,
-                'is_income' => false,
-                'user_id' => 3,
-                'category_id' => 2
             ]
         ]);
     }

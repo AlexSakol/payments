@@ -19,7 +19,7 @@ class PaymentsController extends Controller
         if($user != null)
         {
             $payments = $user->payments;
-            return view('payments', ['payments' => $payments]);
+            return view('payments.payments', ['payments' => $payments]);
         }
         else return redirect()->route('main');
     }
@@ -27,7 +27,7 @@ class PaymentsController extends Controller
     public function addPaymentView()
     {
         $categories = Category::all();
-        return view('create_payment', ['categories' => $categories]);
+        return view('payments.create_payment', ['categories' => $categories]);
     }
 
     public function addPayment(Request $request)
@@ -55,7 +55,7 @@ class PaymentsController extends Controller
         if($payment != null)
         {
             $categories = Category::all();
-            return view('edit_payment', ['payment' => $payment, 'categories' => $categories]);
+            return view('payments.edit_payment', ['payment' => $payment, 'categories' => $categories]);
         }
         else
         {
