@@ -24,7 +24,10 @@ Route::post('/addPayment', [PaymentsController::class, 'addPayment'])->name('add
 Route::post('/deletePayment', [PaymentsController::class, 'deletePayment'])->name('delete_payment');
 Route::get('/editPayment/{id}', [PaymentsController::class, 'editPaymentView'])->name('edit_payment');
 Route::post('/editPayment/{id}/updatePayment', [PaymentsController::class, 'updatePayment'])->name('update_payment');
-Route::get('myLimits', [LimitsController::class, 'getLimits'])->name('limits');
+Route::get('/myLimits', [LimitsController::class, 'getLimits'])->name('limits');
+Route::get('/createLimit', [LimitsController::class, 'createLimitView'])->name('create_limit');
+Route::post('/addLimit', [LimitsController::class, 'addLimit'])->name('add_limit');
+Route::post('/addLimit', [LimitsController::class, 'deleteLimit'])->name('delete_limit');
 
 
 Route::get('/dashboard', function () {

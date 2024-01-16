@@ -21,7 +21,7 @@
                         Редактировать</a>
                 </td>
                 <td>
-                    <form method="POST" action="#">
+                    <form method="POST" action="{{route('delete_limit')}}">
                         @csrf
                         <input type="hidden" name="id" value="{{$limit->id}}">
                         <input class="btn btn-outline-danger" type="submit" value="Удалить">
@@ -30,5 +30,5 @@
             </tr>
         @endforeach
     </table>
-    <a class="btn btn-success" href="#">Добавить</a>
+    <a class="btn btn-success" href="{{route('create_limit')}}">Добавить</a>
 @endsection
