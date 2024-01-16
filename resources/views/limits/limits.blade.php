@@ -17,7 +17,7 @@
                 <td>{{$limit->end_date}}</td>
                 <td>{{$limit->price}}</td>
                 <td>
-                    <a class="btn btn-outline-info" href="#">
+                    <a class="btn btn-outline-info" href="{{route('edit_limit', $limit->id)}}">
                         Редактировать</a>
                 </td>
                 <td>

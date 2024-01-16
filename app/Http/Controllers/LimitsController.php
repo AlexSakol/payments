@@ -34,6 +34,32 @@ class LimitsController extends Controller
         $limit->save();
     }
 
+    public function editLimitView(int $id)
+    {
+        $limit = Limit::find($id);
+        if($limit != null)
+        {
+            return view('limits.edit_limit', ['limit' => $limit]);
+        }
+        else
+        {
+            return redirect()->route('limits');
+        }
+    }
+
+    public function updateLimit(int $id, Request $request)
+    {
+        $limit = Limit::find($id);
+        if($limit != null)
+        {
+            $limit->start_date = $request->input('start_date');
+            $limit->end_date = $request->input('end_date');
+            $limit->price = $request->input('price');
+            $limit->save();
+        }
+        return redirect()->route('limits');
+    }
+
     public function deleteLimit(Request $request)
     {
         Limit::destroy($request->input('id'));
