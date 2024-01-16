@@ -1,6 +1,6 @@
 @extends('layouts.index')
 
-@section('title')Добавление платежа@endsection
+@section('title')Редактирование платежа@endsection
 
 @section('content')
     <h3>Редактировать платёж</h3>

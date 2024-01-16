@@ -47,4 +47,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(Payment::class);
     }
+
+    public function limits()
+    {
+        return $this->hasMany(Limit::class);
+    }
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
 }
