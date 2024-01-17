@@ -20,7 +20,10 @@ class PaymentsController extends Controller
         if($user != null)
         {
             $payments = $user->payments;
-            return view('payments.payments', ['payments' => $payments]);
+            $incomes = $payments->where('is_income', '=', '1')->sum('price');
+            $debts = $payments->where('is_income', '=', '0')->sum('price');
+            $balance = $incomes - $debts;
+            return view('payments.payments', ['payments' => $payments, 'balance' => $balance]);
         }
         else return redirect()->route('main');
     }

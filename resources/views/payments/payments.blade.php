@@ -42,4 +42,6 @@
             @endforeach
         </table>
         <a class="btn btn-success" href="{{route('create_payment')}}">Добавить</a>
+        <h4>Ваш баланс</h4>
+        <p>{{$balance}}</p>
 @endsection
