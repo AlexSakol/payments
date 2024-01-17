@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PaymentRequest;
 use App\Models\Category;
 use App\Models\Payment;
 use App\Models\User;
@@ -30,7 +31,7 @@ class PaymentsController extends Controller
         return view('payments.create_payment', ['categories' => $categories]);
     }
 
-    public function addPayment(Request $request)
+    public function addPayment(PaymentRequest $request)
     {
         $payment = new Payment();
         $payment->user_id = Auth::user()->id;
@@ -40,13 +41,13 @@ class PaymentsController extends Controller
         $payment->category_id = $request->input('category_id');
         $payment->is_income = $request->input('is_income');
         $payment->save();
-        return redirect()->route('payments');
+        return redirect()->route('payments')->with('success', 'Платеж добавлен');
     }
 
     public function deletePayment(Request $request)
     {
         Payment::destroy($request->input('id'));
-        return redirect()->route('payments');
+        return redirect()->route('payments')->with('success', 'Платеж удален');
     }
 
     public function editPaymentView(int $id)
@@ -63,7 +64,7 @@ class PaymentsController extends Controller
         }
     }
 
-    public function updatePayment(int $id, Request $request)
+    public function updatePayment(int $id, PaymentRequest $request)
     {
         $payment = Payment::find($id);
         if($payment != null)
@@ -75,6 +76,6 @@ class PaymentsController extends Controller
             $payment->is_income = $request->input('is_income');
             $payment->save();
         }
-        return redirect()->route('payments');
+        return redirect()->route('payments')->with('success', 'Платеж обновлен');
     }
 }

@@ -4,6 +4,9 @@
 
 @section('content')
     <h3>Мои платежи</h3>
+
+    @include('layouts.messages')
+
         <table class="table table-striped">
             <tr>
                 <th>Наименование</th>
