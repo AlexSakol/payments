@@ -4,6 +4,7 @@
 
 @section('content')
     <h3>Мои лимиты</h3>
+    @include('layouts.messages')
     <table class="table table-striped">
         <tr>
             <th>Начальная дата</th>

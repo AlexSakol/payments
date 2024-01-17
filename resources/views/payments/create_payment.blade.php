@@ -4,9 +4,7 @@
 
 @section('content')
     <h3>Добавить платёж</h3>
-
     @include('layouts.messages')
-
     <form method="POST" action="{{route('add_payment')}}">
         @csrf
         <div class="form-group mt-3">

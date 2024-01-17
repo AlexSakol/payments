@@ -30,7 +30,7 @@ class PaymentRequest extends FormRequest
         ];
     }
 
-    public function messages()
+    public function messages(): array
     {
         return [
             'name.required' => 'Поле "Наименование" должно быть заполнено',
@@ -44,10 +44,10 @@ class PaymentRequest extends FormRequest
             'date.before_or_equal' => 'Максимальное значение даты 01.01.2100',
             'date.after_or_equal' => 'Минимальное значение даты 01.01.2000',
             'category_id.required' => 'Не выбрана категория',
-            'category_id.integer' => 'Не верный формат идентификатора категории',
-            'category_id.min' => 'Не верное значение идентификатора категории',
+            'category_id.integer' => 'Неверный формат идентификатора категории',
+            'category_id.min' => 'Неверное значение идентификатора категории',
             'is_income.required' => 'Не указан доход/расход',
-            'is_income.bool' => 'Не верный формат поля доход/расход'
+            'is_income.bool' => 'Неверный формат поля доход/расход'
         ];
     }
 }

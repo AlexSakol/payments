@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Limit;
+use App\Http\Requests\LimitRequest;
 
 class LimitsController extends Controller
 {
@@ -24,7 +25,7 @@ class LimitsController extends Controller
         return view('limits.create_limit');
     }
 
-    public function addLimit(Request $request)
+    public function addLimit(LimitRequest $request)
     {
         $limit = new Limit();
         $limit->start_date = $request->input('start_date');
@@ -32,6 +33,7 @@ class LimitsController extends Controller
         $limit->price = $request->input('price');
         $limit->user_id = Auth::user()->id;
         $limit->save();
+        return redirect()->route('limits')->with('success', 'Лимит добавлен');
     }
 
     public function editLimitView(int $id)
@@ -47,7 +49,7 @@ class LimitsController extends Controller
         }
     }
 
-    public function updateLimit(int $id, Request $request)
+    public function updateLimit(int $id, LimitRequest $request)
     {
         $limit = Limit::find($id);
         if($limit != null)
@@ -57,12 +59,12 @@ class LimitsController extends Controller
             $limit->price = $request->input('price');
             $limit->save();
         }
-        return redirect()->route('limits');
+        return redirect()->route('limits')->with('success', 'Лимит обновлен');
     }
 
     public function deleteLimit(Request $request)
     {
         Limit::destroy($request->input('id'));
-        return redirect()->route('limits');
+        return redirect()->route('limits')->with('success', 'Лимит удален');
     }
 }
