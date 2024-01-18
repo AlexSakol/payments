@@ -14,6 +14,12 @@ use Illuminate\View\View;
 
 class PaymentsController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function getPayments()
     {
         $user = Auth::user();
@@ -47,38 +53,26 @@ class PaymentsController extends Controller
         return redirect()->route('payments')->with('success', 'Платеж добавлен');
     }
 
-    public function deletePayment(Request $request)
+    public function deletePayment(Payment $payment)
     {
-        Payment::destroy($request->input('id'));
+        $payment->delete();
         return redirect()->route('payments')->with('success', 'Платеж удален');
     }
 
-    public function editPaymentView(int $id)
+    public function editPaymentView(Payment $payment)
     {
-        $payment = Payment::find($id);
-        if($payment != null)
-        {
-            $categories = Category::all();
-            return view('payments.edit_payment', ['payment' => $payment, 'categories' => $categories]);
-        }
-        else
-        {
-            return redirect()->route('payments');
-        }
+        $categories = Category::all();
+        return view('payments.edit_payment', ['payment' => $payment, 'categories' => $categories]);
     }
 
-    public function updatePayment(int $id, PaymentRequest $request)
+    public function updatePayment(Payment $payment, PaymentRequest $request)
     {
-        $payment = Payment::find($id);
-        if($payment != null)
-        {
-            $payment->name = $request->input('name');
-            $payment->price = $request->input('price');
-            $payment->date = $request->input('date');
-            $payment->category_id = $request->input('category_id');
-            $payment->is_income = $request->input('is_income');
-            $payment->save();
-        }
+        $payment->name = $request->input('name');
+        $payment->price = $request->input('price');
+        $payment->date = $request->input('date');
+        $payment->category_id = $request->input('category_id');
+        $payment->is_income = $request->input('is_income');
+        $payment->save();
         return redirect()->route('payments')->with('success', 'Платеж обновлен');
     }
 }

@@ -9,6 +9,10 @@ use App\Http\Requests\LimitRequest;
 
 class LimitsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function getLimits()
     {
         $user = Auth::user();
@@ -36,35 +40,23 @@ class LimitsController extends Controller
         return redirect()->route('limits')->with('success', 'Лимит добавлен');
     }
 
-    public function editLimitView(int $id)
+    public function editLimitView(Limit $limit)
     {
-        $limit = Limit::find($id);
-        if($limit != null)
-        {
-            return view('limits.edit_limit', ['limit' => $limit]);
-        }
-        else
-        {
-            return redirect()->route('limits');
-        }
+        return view('limits.edit_limit', ['limit' => $limit]);
     }
 
-    public function updateLimit(int $id, LimitRequest $request)
+    public function updateLimit(Limit $limit, LimitRequest $request)
     {
-        $limit = Limit::find($id);
-        if($limit != null)
-        {
-            $limit->start_date = $request->input('start_date');
-            $limit->end_date = $request->input('end_date');
-            $limit->price = $request->input('price');
-            $limit->save();
-        }
+        $limit->start_date = $request->input('start_date');
+        $limit->end_date = $request->input('end_date');
+        $limit->price = $request->input('price');
+        $limit->save();
         return redirect()->route('limits')->with('success', 'Лимит обновлен');
     }
 
-    public function deleteLimit(Request $request)
+    public function deleteLimit(Limit $limit)
     {
-        Limit::destroy($request->input('id'));
+        $limit->delete();
         return redirect()->route('limits')->with('success', 'Лимит удален');
     }
 }

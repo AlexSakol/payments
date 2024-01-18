@@ -22,10 +22,9 @@
                         Редактировать</a>
                 </td>
                 <td>
-                    <form method="POST" action="{{route('delete_limit')}}">
+                    <form method="POST" action="{{route('delete_limit', $limit)}}">
                         @csrf
                         @method('DELETE')
-                        <input type="hidden" name="id" value="{{$limit->id}}">
                         <input class="btn btn-outline-danger" type="submit" value="Удалить">
                     </form>
                 </td>

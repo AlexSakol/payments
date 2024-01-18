@@ -21,15 +21,21 @@ Route::get('/', [MainController::class,'show'])->name('main');
 Route::get('/myPayments', [PaymentsController::class, 'getPayments'])->name('payments');
 Route::get('/createPayment', [PaymentsController::class, 'addPaymentView'])->name('create_payment');
 Route::post('/addPayment', [PaymentsController::class, 'addPayment'])->name('add_payment');
-Route::delete('/deletePayment', [PaymentsController::class, 'deletePayment'])->name('delete_payment');
-Route::get('/editPayment/{id}', [PaymentsController::class, 'editPaymentView'])->name('edit_payment');
-Route::patch('/editPayment/{id}/updatePayment', [PaymentsController::class, 'updatePayment'])->name('update_payment');
+Route::delete('/deletePayment/{payment}', [PaymentsController::class, 'deletePayment'])
+    ->name('delete_payment')->middleware('can:delete,payment');
+Route::get('/editPayment/{payment}', [PaymentsController::class, 'editPaymentView'])
+    ->name('edit_payment')->middleware('can:update,payment');
+Route::patch('/editPayment/{payment}/updatePayment', [PaymentsController::class, 'updatePayment'])
+    ->name('update_payment')->middleware('can:update,payment');
 Route::get('/myLimits', [LimitsController::class, 'getLimits'])->name('limits');
 Route::get('/createLimit', [LimitsController::class, 'createLimitView'])->name('create_limit');
 Route::post('/addLimit', [LimitsController::class, 'addLimit'])->name('add_limit');
-Route::delete('/deleteLimit', [LimitsController::class, 'deleteLimit'])->name('delete_limit');
-Route::get('/editLimit/{id}', [LimitsController::class, 'editLimitView'])->name('edit_limit');
-Route::patch('/editLimit/{id}/updateLimit', [LimitsController::class, 'updateLimit'])->name('update_limit');
+Route::delete('/deleteLimit/{limit}', [LimitsController::class, 'deleteLimit'])
+    ->name('delete_limit')->middleware('can:delete,limit');
+Route::get('/editLimit/{limit}', [LimitsController::class, 'editLimitView'])
+    ->name('edit_limit')->middleware('can:update,limit');
+Route::patch('/editLimit/{limit}/updateLimit', [LimitsController::class, 'updateLimit'])
+    ->name('update_limit')->middleware('can:update,limit');
 
 
 Route::get('/dashboard', function () {
