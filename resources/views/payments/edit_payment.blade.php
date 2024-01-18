@@ -7,6 +7,7 @@
     @include('layouts.messages')
     <form method="POST" action="{{route('update_payment', $payment->id)}}">
         @csrf
+        @method('PATCH')
         <div class="form-group mt-3">
             <label>Наименование</label>
             <input class="form-control" type="text" name="name" value="{{ old('name', $payment->name)}}">
@@ -24,7 +25,7 @@
             <select class="form-select" name="category_id" aria-label="Default select example">
                 @foreach($categories as $category)
                     <option value="{{$category->id}}"
-                        {{old('category_id', $category->id) == $category->id  ? 'selected' : ''}}>
+                        {{old('category_id', $payment->category_id) == $category->id  ? 'selected' : ''}}>
                         {{$category->name}}
                     </option>
                 @endforeach

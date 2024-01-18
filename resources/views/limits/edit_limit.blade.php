@@ -7,6 +7,7 @@
     @include('layouts.messages')
     <form method="POST" action="{{route('update_limit', $limit->id)}}">
         @csrf
+        @method('PATCH')
         <div class="form-group mt-3">
             <label>Начальная дата</label>
             <input class="form-control" type="date" name="start_date"

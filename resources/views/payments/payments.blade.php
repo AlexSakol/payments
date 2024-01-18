@@ -34,6 +34,7 @@
                     <td>
                         <form method="POST" action="{{route('delete_payment')}}">
                             @csrf
+                            @method('DELETE')
                             <input type="hidden" name="id" value="{{$payment->id}}">
                             <input class="btn btn-outline-danger" type="submit" value="Удалить">
                         </form>
