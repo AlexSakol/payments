@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PaymentRequest;
+use App\Http\Requests\PaymentsFilterRequest;
 use App\Models\Category;
 use App\Models\Payment;
 use App\Models\User;
@@ -20,16 +21,19 @@ class PaymentsController extends Controller
         $this->middleware('auth');
     }
 
-    public function getPayments()
+    public function getPayments(int $category_id = 0)
     {
         $user = Auth::user();
+        $categories = Category::all();
         if($user != null)
         {
             $payments = $user->payments;
-            $incomes = $payments->where('is_income', '=', '1')->sum('price');
-            $debts = $payments->where('is_income', '=', '0')->sum('price');
-            $balance = $incomes - $debts;
-            return view('payments.payments', ['payments' => $payments, 'balance' => $balance]);
+            if($category_id != 0)
+            {
+                $payments = $payments->where('category_id', $category_id);
+            }
+            return view('payments.payments',
+                ['payments' => $payments, 'categories' => $categories]);
         }
         else return redirect()->route('main');
     }

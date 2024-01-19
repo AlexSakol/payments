@@ -18,7 +18,8 @@ use App\Http\Controllers\LimitsController;
 */
 
 Route::get('/', [MainController::class,'show'])->name('main');
-Route::get('/myPayments', [PaymentsController::class, 'getPayments'])->name('payments');
+Route::get('/myPayments/{category_id?}', [PaymentsController::class, 'getPayments'])->name('payments');
+Route::post('/myPayments');
 Route::get('/createPayment', [PaymentsController::class, 'addPaymentView'])->name('create_payment');
 Route::post('/addPayment', [PaymentsController::class, 'addPayment'])->name('add_payment');
 Route::delete('/deletePayment/{payment}', [PaymentsController::class, 'deletePayment'])
@@ -37,7 +38,6 @@ Route::get('/editLimit/{limit}', [LimitsController::class, 'editLimitView'])
 Route::patch('/editLimit/{limit}/updateLimit', [LimitsController::class, 'updateLimit'])
     ->name('update_limit')->middleware('can:update,limit');
 
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -49,3 +49,5 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+Route::fallback([MainController::class,'show']);
