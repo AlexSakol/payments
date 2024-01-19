@@ -27,13 +27,13 @@ class PaymentsController extends Controller
         $categories = Category::all();
         if($user != null)
         {
-            $payments = $user->payments;
+            $payments = Payment::where('user_id', $user->id);
             if($category_id != 0)
             {
                 $payments = $payments->where('category_id', $category_id);
             }
             return view('payments.payments',
-                ['payments' => $payments, 'categories' => $categories]);
+                ['payments' => $payments->paginate(6), 'categories' => $categories]);
         }
         else return redirect()->route('main');
     }

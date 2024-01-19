@@ -19,8 +19,8 @@ class LimitsController extends Controller
         $user = Auth::user();
         if($user != null)
         {
-            $limits = $user->limits;
-            return view('limits.limits', ['limits' => $limits]);
+            $limits = Limit::where('user_id', $user->id);
+            return view('limits.limits', ['limits' => $limits->paginate(6)]);
         }
         else return redirect()->route('main');
     }
