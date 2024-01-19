@@ -6,6 +6,8 @@
     <h3>Мои платежи</h3>
     @include('layouts.messages')
 
+    <div class="row">
+
     <div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
             Категории
@@ -13,9 +15,12 @@
         <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="{{route('payments')}}">Все</a></li>
             @foreach($categories as $category)
-                <li><a class="dropdown-item" href="{{route('payments', $category->id)}}">{{$category->name}}</a></li>
+                <li><a class="dropdown-item" href="{{route('payments', ['category_id' => $category->id])}}">
+                        {{$category->name}}</a></li>
             @endforeach
         </ul>
+    </div>
+
     </div>
 
    <table class="table table-striped mt-3">

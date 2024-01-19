@@ -11,6 +11,9 @@
                     <li>
                         <a href="{{route('limits')}}" class="nav-link px-2 text-white">Мои лимиты</a>
                     </li>
+                    <li>
+                        <a href="{{route('balance')}}" class="nav-link px-2 text-white">Мой баланс</a>
+                    </li>
                 @endauth
             </ul>
             @guest()

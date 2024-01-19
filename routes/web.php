@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\PaymentsController;
 use App\Http\Controllers\LimitsController;
+use App\Http\Controllers\BalanceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +19,8 @@ use App\Http\Controllers\LimitsController;
 */
 
 Route::get('/', [MainController::class,'show'])->name('main');
-Route::get('/myPayments/{category_id?}', [PaymentsController::class, 'getPayments'])->name('payments');
+Route::get('/myPayments/{category_id?}', [PaymentsController::class, 'getPayments'])
+    ->name('payments');
 Route::post('/myPayments');
 Route::get('/createPayment', [PaymentsController::class, 'addPaymentView'])->name('create_payment');
 Route::post('/addPayment', [PaymentsController::class, 'addPayment'])->name('add_payment');
@@ -36,7 +38,8 @@ Route::delete('/deleteLimit/{limit}', [LimitsController::class, 'deleteLimit'])
 Route::get('/editLimit/{limit}', [LimitsController::class, 'editLimitView'])
     ->name('edit_limit')->middleware('can:update,limit');
 Route::patch('/editLimit/{limit}/updateLimit', [LimitsController::class, 'updateLimit'])
-    ->name('update_limit')->middleware('can:update,limit');
+    ->name('/update_limit')->middleware('can:update,limit');
+Route::get('/myBalance', [BalanceController::class, 'balance'])->name('balance');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
