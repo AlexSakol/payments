@@ -21,7 +21,6 @@ use App\Http\Controllers\BalanceController;
 Route::get('/', [MainController::class,'show'])->name('main');
 Route::get('/myPayments/{category_id?}', [PaymentsController::class, 'getPayments'])
     ->name('payments');
-Route::post('/myPayments');
 Route::get('/createPayment', [PaymentsController::class, 'addPaymentView'])->name('create_payment');
 Route::post('/addPayment', [PaymentsController::class, 'addPayment'])->name('add_payment');
 Route::delete('/deletePayment/{payment}', [PaymentsController::class, 'deletePayment'])
