@@ -22,7 +22,7 @@ class PaymentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|alpha|between:2,255',
+            'name' => 'required|string|between:2,255',
             'price' => 'required|decimal:2|between:0.01,10000000',
             'date' => 'required|date|before_or_equal:2100/01/01|after_or_equal:2000/01/01',
             'category_id' => 'required|integer|min:1',
@@ -34,7 +34,7 @@ class PaymentRequest extends FormRequest
     {
         return [
             'name.required' => 'Поле "Наименование" должно быть заполнено',
-            'name.alpha' => 'Наименование должно содержать только буквы',
+            'name.string' => 'Наименование должно быть строкой',
             'name.between' => 'Наименование должно содержать от 2 до 255 символов',
             'price.required' => 'Поле "Сумма" должно быть заполнено',
             'price.decimal' => 'Сумма должна быть в формате ХХХХХХХХ.ХХ',
