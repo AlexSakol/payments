@@ -33,8 +33,7 @@ class LimitsController extends Controller
     public function addLimit(LimitRequest $request)
     {
         $limit = new Limit();
-        $limit->start_date = $request->input('start_date');
-        $limit->end_date = $request->input('end_date');
+        $limit->date = $request->input('date');
         $limit->price = $request->input('price');
         $limit->user_id = Auth::user()->id;
         $limit->save();
@@ -48,8 +47,7 @@ class LimitsController extends Controller
 
     public function updateLimit(Limit $limit, LimitRequest $request)
     {
-        $limit->start_date = $request->input('start_date');
-        $limit->end_date = $request->input('end_date');
+        $limit->date = $request->input('date');
         $limit->price = $request->input('price');
         $limit->save();
         return redirect()->route('limits')->with('success', 'Лимит обновлен');

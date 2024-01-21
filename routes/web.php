@@ -37,8 +37,9 @@ Route::delete('/deleteLimit/{limit}', [LimitsController::class, 'deleteLimit'])
 Route::get('/editLimit/{limit}', [LimitsController::class, 'editLimitView'])
     ->name('edit_limit')->middleware('can:update,limit');
 Route::patch('/editLimit/{limit}/updateLimit', [LimitsController::class, 'updateLimit'])
-    ->name('/update_limit')->middleware('can:update,limit');
-Route::get('/myBalance', [BalanceController::class, 'balance'])->name('balance');
+    ->name('update_limit')->middleware('can:update,limit');
+Route::get('/myBalance', [BalanceController::class, 'getBalance'])->name('balance');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

@@ -8,6 +8,9 @@
             <li class="nav-item">
                 <a href="{{route('limits')}}" class="nav-link px-2 text-body-secondary">Мои лимиты</a>
             </li>
+            <li class="nav-item">
+                <a href="{{route('balance')}}" class="nav-link px-2 text-body-secondary">Мой баланс</a>
+            </li>
         @endauth
         @guest()
         <li class="nav-item"><a href="{{route('login')}}" class="nav-link px-2 text-body-secondary">Войти</a></li>

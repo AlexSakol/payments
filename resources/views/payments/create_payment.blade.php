@@ -8,23 +8,23 @@
     <form method="POST" action="{{route('add_payment')}}">
         @csrf
         <div class="form-group mt-3">
-            <label>Наименование</label>
+            <label for="name">Наименование</label>
             <input class="form-control" type="text" name="name" value = "{{ old('name') }}"
-                   placeholder="Введите наименование">
+                   placeholder="Введите наименование" id="name">
         </div>
         <div class="form-group mt-3">
-            <label>Сумма</label>
+            <label for="price">Сумма</label>
             <input class="form-control" type="text" name="price" value = "{{ old('price') }}"
-                   placeholder="Введите сумму">
+                   placeholder="Введите сумму" id="price">
         </div>
         <div class="form-group mt-3">
-            <label>Дата</label>
+            <label for="date">Дата</label>
             <input class="form-control" type="date" name="date" value = "{{ old('date') }}"
-                   placeholder="Введите дату">
+                   placeholder="Введите дату" id="date">
         </div>
         <div class="form-group mt-3">
-            <label>Категория</label>
-            <select class="form-select" name="category_id" aria-label="Default select example">
+            <label for="category">Категория</label>
+            <select class="form-select" name="category_id" aria-label="Default select example" id="category">
                 @foreach($categories as $category)
                 <option value="{{$category->id}}"
                     {{old('category_id') == $category->id ? 'selected' : ''}}>{{$category->name}}</option>

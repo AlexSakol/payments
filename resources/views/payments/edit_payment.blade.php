@@ -9,20 +9,23 @@
         @csrf
         @method('PATCH')
         <div class="form-group mt-3">
-            <label>Наименование</label>
-            <input class="form-control" type="text" name="name" value="{{ old('name', $payment->name)}}">
+            <label for="name">Наименование</label>
+            <input class="form-control" type="text" name="name" value="{{ old('name', $payment->name)}}"
+                id="name">
         </div>
         <div class="form-group mt-3">
-            <label>Сумма</label>
-            <input class="form-control" type="text" name="price" value="{{ old('price', $payment->price)}}">
+            <label for="price">Сумма</label>
+            <input class="form-control" type="text" name="price" id="price"
+                   value="{{ old('price', $payment->price)}}">
         </div>
         <div class="form-group mt-3">
-            <label>Дата</label>
-            <input class="form-control" type="date" name="date" value="{{ old('date' , $payment->date)}}">
+            <label for="date">Дата</label>
+            <input class="form-control" type="date" name="date" value="{{ old('date' , $payment->date)}}"
+                id="date">
         </div>
         <div class="form-group mt-3">
-            <label>Категория</label>
-            <select class="form-select" name="category_id" aria-label="Default select example">
+            <label for="category">Категория</label>
+            <select class="form-select" name="category_id" aria-label="Default select example" id="category">
                 @foreach($categories as $category)
                     <option value="{{$category->id}}"
                         {{old('category_id', $payment->category_id) == $category->id  ? 'selected' : ''}}>

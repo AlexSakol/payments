@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Payment;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use App\Models\Limit;
 
 class BalanceController extends Controller
 {
@@ -13,17 +14,26 @@ class BalanceController extends Controller
         $this->middleware('auth');
     }
 
-    public function balance()
+    public function getBalance(Request $request)
     {
         $user = Auth::user();
+        $limits = Limit::where('user_id', $user->id);
+        $date = $request->input('date');
         if($user != null)
         {
-            $payments = Payment::where('user_id', $user->id);
-            $incomes = $payments->where('is_income', true)->sum('price');
-            $debts = $payments->where('is_income', false)->sum('price');
-            $balance = $incomes - $debts;
-            return view('balance.balance', ['balance' => $balance]);
+            $incomes = $user->payments->where('is_income', true);
+            $debts = $user->payments->where('is_income', false);
+            if($date != null)
+            {
+                $limit = $limits->firstWhere('date', $date);
+                $incomes = $incomes->whereBetween('date', [$date . '-01', $date . '-31']);
+                $debts = $debts->whereBetween('date', [$date . '-01', $date . '-31']);
+            }
+            else $limit = null;
+            return view('balance.balance', ['incomes' => $incomes->sum('price'),
+                'debts' => $debts->sum('price'), 'limit' => $limit]);
         }
         else return view('main');
     }
+
 }

@@ -60,6 +60,7 @@
             @endforeach
         </table>
     {{ $payments->onEachSide(3)->links() }}
-        <a class="btn btn-success" href="{{route('create_payment')}}">Добавить</a>
+        <a class="btn btn-success mt-3" href="{{route('create_payment')}}">Добавить</a>
+    <br>
 
 @endsection

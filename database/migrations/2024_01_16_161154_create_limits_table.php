@@ -13,8 +13,7 @@ return new class extends Migration
     {
         Schema::create('limits', function (Blueprint $table) {
             $table->id();
-            $table->date('start_date');
-            $table->date('end_date');
+            $table->string('date');
             $table->decimal('price');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
         });

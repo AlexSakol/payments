@@ -7,15 +7,13 @@
     @include('layouts.messages')
     <table class="table table-striped">
         <tr>
-            <th>Начальная дата</th>
-            <th>Конечная дата</th>
+            <th>Месяц и год</th>
             <th>Сумма</th>
             <th></th><th></th>
         </tr>
         @foreach($limits as $limit)
             <tr>
-                <td>{{$limit->start_date}}</td>
-                <td>{{$limit->end_date}}</td>
+                <td>{{$limit->date}}</td>
                 <td>{{$limit->price}}</td>
                 <td>
                     <a class="btn btn-outline-info" href="{{route('edit_limit', $limit->id)}}">

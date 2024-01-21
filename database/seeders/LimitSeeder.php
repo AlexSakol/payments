@@ -15,14 +15,12 @@ class LimitSeeder extends Seeder
     {
         DB::table('limits')->insert([
            [
-               'start_date' => '2024-01-01',
-               'end_date' => '2024-01-31',
+               'date' => '2024-01',
                'price' => 1500,
                'user_id' => 1
            ],
            [
-               'start_date' => '2024-01-01',
-               'end_date' => '2024-01-31',
+               'date' => '2024-01',
                'price' => 1000,
                'user_id' => 2
            ]
