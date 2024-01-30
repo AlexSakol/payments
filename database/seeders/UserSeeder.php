@@ -24,12 +24,7 @@ class UserSeeder extends Seeder
                 'email' => 'user2@mail.com',
                 'role_id' => 2,
                 'password' => Hash::make('User2'),
-                'banned' => false],
-            [   'name' => 'User3',
-                'email' => 'user3@mail.com',
-                'role_id' => 2,
-                'password' => Hash::make('User3'),
-                'banned' => true]
+                'banned' => false]
         ]);
     }
 }
