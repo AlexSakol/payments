@@ -3,7 +3,7 @@
 @section('title')Мой баланс@endsection
 
 @section('content')
-
+    @include('layouts.banned')
     <h3>Мой баланс</h3>
     <form method="GET" action="{{route('balance')}}">
         <label for="date">Месяц и год</label>

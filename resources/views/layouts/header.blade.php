@@ -14,6 +14,11 @@
                     <li>
                         <a href="{{route('balance')}}" class="nav-link px-2 text-white">Мой баланс</a>
                     </li>
+                    @if(Auth::user()->role->name == 'admin')
+                        <li>
+                            <a href="{{route('admin')}}" class="nav-link px-2 text-white">Администрирование</a>
+                        </li>
+                    @endif
                 @endauth
             </ul>
             @guest()

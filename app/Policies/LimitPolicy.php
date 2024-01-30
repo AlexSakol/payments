@@ -11,9 +11,14 @@ class LimitPolicy
      * Create a new policy instance.
      */
 
+    public function create(User $user)
+    {
+        return $user->banned == false;
+    }
+
     public function update(User $user, Limit $limit)
     {
-        return $limit->user->id === $user->id;
+        return $this->create($user) && $limit->user->id == $user->id;
     }
 
     public function delete (User $user, Limit $limit)

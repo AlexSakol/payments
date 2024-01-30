@@ -13,9 +13,14 @@ class PaymentPolicy
      * Create a new policy instance.
      */
 
+    public function create(User $user)
+    {
+        return $user->banned == false;
+    }
+
     public function update(User $user, Payment $payment)
     {
-        return $payment->user->id === $user->id;
+        return $this->create($user) && $payment->user->id == $user->id;
     }
 
     public function delete(User $user, Payment $payment)

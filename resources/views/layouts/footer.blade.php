@@ -11,6 +11,11 @@
             <li class="nav-item">
                 <a href="{{route('balance')}}" class="nav-link px-2 text-body-secondary">Мой баланс</a>
             </li>
+            @if(Auth::user()->role->name == 'admin')
+                <li class="nav-item">
+                    <a href="{{route('admin')}}" class="nav-link px-2 text-body-secondary">Администрирование</a>
+                </li>
+            @endif
         @endauth
         @guest()
         <li class="nav-item"><a href="{{route('login')}}" class="nav-link px-2 text-body-secondary">Войти</a></li>

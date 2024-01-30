@@ -5,6 +5,7 @@
 @section('content')
     <h3>Мои платежи</h3>
     @include('layouts.messages')
+    @include('layouts.banned')
 
     <div class="row">
 

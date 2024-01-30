@@ -5,6 +5,7 @@
 @section('content')
     <h3>Мои лимиты</h3>
     @include('layouts.messages')
+    @include('layouts.banned')
     <table class="table table-striped">
         <tr>
             <th>Месяц и год</th>
