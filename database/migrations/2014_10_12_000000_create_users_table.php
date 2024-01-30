@@ -18,7 +18,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->boolean('banned')->default(false);
-            $table->foreignId('role_id')->constrained();
+            $table->foreignId('role_id')->default(2)->constrained();
             $table->rememberToken();
             $table->timestamps();
         });

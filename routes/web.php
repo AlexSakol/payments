@@ -47,6 +47,7 @@ Route::get('/myBalance', [BalanceController::class, 'getBalance'])->name('balanc
 Route::get('/admin', [AdminController::class, 'admin'])->name('admin');
 Route::post('/ban/{user}', [AdminController::class, 'ban'])->name('ban');
 Route::post('/unban/{user}', [AdminController::class, 'unban'])->name('unban');
+Route::post('/makeAdmin/{user}', [AdminController::class, 'makeAdmin'])->name('makeAdmin');
 
 
 Route::get('/dashboard', function () {

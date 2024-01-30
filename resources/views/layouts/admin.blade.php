@@ -11,6 +11,7 @@
             <th>E-mail</th>
             <th>Роль</th>
             <th></th>
+            <th></th>
         </tr>
         @foreach($users as $user)
             <tr>
@@ -31,7 +32,13 @@
                         </form>
                     @endif
                 </td>
-                @else <td></td>
+                <td>
+                    <form method="POST" action="{{route('makeAdmin', $user)}}">
+                        @csrf
+                        <input class="btn btn-outline-primary" type="submit" value="Назначить администратором">
+                    </form>
+                </td>
+                @else <td></td><td></td>
                 @endif
             </tr>
         @endforeach
