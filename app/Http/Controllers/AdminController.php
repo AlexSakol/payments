@@ -15,7 +15,7 @@ class AdminController extends Controller
 
     public function admin()
     {
-        if(Auth::user()->role->name == 'admin')
+        if(Auth::user()->role->name == 'admin' && Auth::user()->banned == false)
         {
             $users = User::paginate(6);
             return view('layouts.admin', ['users' => $users]);
@@ -25,7 +25,7 @@ class AdminController extends Controller
 
     public function ban(User $user)
     {
-        if(Auth::user()->role->name == 'admin')
+        if(Auth::user()->role->name == 'admin' && Auth::user()->banned == false)
         {
             $user->banned = true;
             $user->save();
@@ -36,7 +36,7 @@ class AdminController extends Controller
 
     public function unban(User $user)
     {
-        if(Auth::user()->role->name == 'admin')
+        if(Auth::user()->role->name == 'admin' && Auth::user()->banned == false)
         {
             $user->banned = false;
             $user->save();
@@ -47,7 +47,7 @@ class AdminController extends Controller
 
     public function makeAdmin(User $user)
     {
-        if(Auth::user()->role->name == 'admin')
+        if(Auth::user()->role->name == 'admin' && Auth::user()->banned == false)
         {
             $user->role_id = 1;
             $user->save();
