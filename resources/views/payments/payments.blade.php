@@ -51,11 +51,8 @@
                         Редактировать</a>
                 </td>
                 <td>
-                    <form method="POST" action="{{route('delete_payment', $payment)}}">
-                         @csrf
-                         @method('DELETE')
-                         <input class="btn btn-outline-danger" type="submit" value="Удалить">
-                    </form>
+                    <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
+                            data-bs-target="#delete_payment"> Удалить </button>
                 </td>
             </tr>
             @endforeach
@@ -63,5 +60,27 @@
     {{ $payments->onEachSide(3)->links() }}
         <a class="btn btn-success mt-3" href="{{route('create_payment')}}">Добавить</a>
     <br>
+
+    <div class="modal fade" id="delete_payment" tabindex="-1" aria-labelledby="delete_paymentLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="delete_paymentLabel">Удалить платеж</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form method="POST" action="{{route('delete_payment', $payment)}}">
+                    @csrf
+                    @method('DELETE')
+                    <div class="modal-body">
+                        <p>Внимание! Действие необратимо.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <input class="btn btn-danger" type="submit" value="Удалить">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
 @endsection
