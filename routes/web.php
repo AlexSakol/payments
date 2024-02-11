@@ -50,10 +50,6 @@ Route::post('/unban/{user}', [AdminController::class, 'unban'])->name('unban');
 Route::post('/makeAdmin/{user}', [AdminController::class, 'makeAdmin'])->name('makeAdmin');
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
