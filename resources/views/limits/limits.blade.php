@@ -6,27 +6,29 @@
     <h3>Мои лимиты</h3>
     @include('layouts.messages')
     @include('layouts.banned')
-    <table class="table table-striped">
-        <tr>
-            <th>Месяц и год</th>
-            <th>Сумма</th>
-            <th></th><th></th>
-        </tr>
-        @foreach($limits as $limit)
+    <div class="table-responsive">
+        <table class="table table-striped">
             <tr>
-                <td>{{$limit->date}}</td>
-                <td>{{$limit->price}}</td>
-                <td>
-                    <a class="btn btn-outline-info" href="{{route('edit_limit', $limit->id)}}">
-                        Редактировать</a>
-                </td>
-                <td>
-                    <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
-                            data-bs-target="#delete_limit">Удалить</button>
-                </td>
+                <th>Месяц и год</th>
+                <th>Сумма</th>
+                <th></th><th></th>
             </tr>
-        @endforeach
-    </table>
+            @foreach($limits as $limit)
+                <tr>
+                    <td>{{$limit->date}}</td>
+                    <td>{{$limit->price}}</td>
+                    <td>
+                        <a class="btn btn-outline-info" href="{{route('edit_limit', $limit->id)}}">
+                            Редактировать</a>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
+                            data-bs-target="#delete_limit">Удалить</button>
+                    </td>
+                </tr>
+          @endforeach
+        </table>
+    </div>
     <a class="btn btn-success" href="{{route('create_limit')}}">Добавить</a>
 
     <div class="modal fade" id="delete_limit" tabindex="-1" aria-labelledby="delete_limitLabel" aria-hidden="true">

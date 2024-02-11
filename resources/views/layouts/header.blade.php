@@ -1,50 +1,52 @@
-<header class="p-3 text-bg-dark">
-    <div class="container">
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="navbar">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">Главная</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                <li><a href="/" class="nav-link px-2 text-white">Главная</a></li>
-                @auth()
-                    <li>
-                        <a href="{{route('payments')}}" class="nav-link px-2 text-white">Мои платежи</a>
-                    </li>
-                    <li>
-                        <a href="{{route('limits')}}" class="nav-link px-2 text-white">Мои лимиты</a>
-                    </li>
-                    <li>
-                        <a href="{{route('balance')}}" class="nav-link px-2 text-white">Мой баланс</a>
-                    </li>
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                @auth
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{{route('payments')}}">Мои платежи</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{{route('limits')}}">Мои лимиты</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{{route('balance')}}">Баланс</a>
+                </li>
                     @if(Auth::user()->role->name == 'admin')
                         <li>
-                            <a href="{{route('admin')}}" class="nav-link px-2 text-white">Администрирование</a>
+                            <a class="nav-link text-white" href="{{route('admin')}}">Администрирование</a>
                         </li>
                     @endif
+
                 @endauth
             </ul>
-            @guest()
-            <div class="text-end">
+            @guest
                 <a href="{{route('login')}}" class="btn btn-outline-light me-2">Войти</a>
                 <a href="{{route('register')}}" class="btn btn-warning">Зарегистрироваться</a>
-            </div>
             @else
-                <div class="text-end">
-                    <div class="dropdown">
-                        <a class="btn btn-warning dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            {{Auth::user()->name}}
-                        </a>
-
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{route('profile.edit')}}">Кабинет</a></li>
-                            <li>
-                                <form method="post" action="{{route('logout')}}">
-                                    @csrf
-                                    <input type="submit" class="dropdown-item" value="Выйти">
-                                </form>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+                <li class="dropdown">
+                    <a class="btn btn-warning dropdown-toggle" href="#" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        {{Auth::user()->name}}
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-lg-end">
+                        <li><a class="dropdown-item" href="{{route('profile.edit')}}">Кабинет</a></li>
+                        <li>
+                            <form method="post" action="{{route('logout')}}">
+                                @csrf
+                                <input type="submit" class="dropdown-item" value="Выйти">
+                            </form>
+                        </li>
+                    </ul>
+                </li>
             @endguest
         </div>
     </div>
-</header>
+</nav>
+

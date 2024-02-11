@@ -4,12 +4,12 @@
 
 @section('content')
     @include('layouts.messages')
-    <div class="card m-auto w-50 mt-5 mb-5">
+    <div class="card m-auto col-lg-6 mt-5 mb-5">
         <div class="card-header">Регистрация</div>
         <div class="card-body">
             <form method="POST" action="{{ route('register') }}">
                 @csrf
-                <div class="form-group mt-3 mb-3">
+                <div class="form-group mb-3">
                     <label for="name">Логин</label>
                     <input class="form-control" type="text" id="name" name ="name" value="{{old('name')}}"
                            required autofocus autocomplete="name">

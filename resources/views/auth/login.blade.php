@@ -4,12 +4,12 @@
 
 @section('content')
     @include('layouts.messages')
-    <div class="card m-auto w-25 mt-5 mb-5">
+    <div class="card m-auto col-lg-3 mt-5 mb-5">
         <div class="card-header">Войти</div>
         <div class="card-body">
             <form method="POST" action="{{ route('login') }}">
             @csrf
-            <div class="form-group mt-3 mb-3">
+            <div class="form-group mb-3">
                 <label for="email">E-mail</label>
                 <input class="form-control" type="email" id="email" name ="email" value="{{old('email')}}"
                        required autofocus autocomplete="username">
@@ -25,4 +25,5 @@
         </form>
         </div>
     </div>
+
 @endsection
