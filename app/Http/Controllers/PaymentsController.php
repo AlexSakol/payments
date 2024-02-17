@@ -21,16 +21,39 @@ class PaymentsController extends Controller
         $this->middleware('auth');
     }
 
-    public function getPayments(int $category_id = 0)
+    public function getPayments(Request $request)
     {
         $user = Auth::user();
         $categories = Category::all();
         if($user != null)
         {
             $payments = Payment::where('user_id', $user->id);
+            $category_id = $request->input('category_id');
+            $start_date = $request->input('start_date');
+            $end_date = $request->input('end_date');
+            $is_income = $request->input('is_income');
             if($category_id != 0)
             {
                 $payments = $payments->where('category_id', $category_id);
+            }
+            if($start_date != null)
+            {
+                $payments = $payments->where('date', '>', $start_date);
+            }
+            if($end_date != null)
+            {
+                $payments = $payments->where('date', '<', $end_date);
+            }
+            if($is_income != 'all')
+            {
+                if($is_income == '1')
+                {
+                    $payments = $payments->where('is_income', 1);
+                }
+                if($is_income == '0')
+                {
+                    $payments = $payments->where('is_income', 0);
+                }
             }
             return view('payments.payments',
                 ['payments' => $payments->paginate(5), 'categories' => $categories]);

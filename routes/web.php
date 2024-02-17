@@ -22,7 +22,7 @@ use App\Http\Controllers\AdminController;
 Route::get('/', [PagesController::class,'mainView'])->name('main');
 Route::get('/instruction', [PagesController::class, 'instruction'])->name('instruction');
 
-Route::get('/myPayments/{category_id?}', [PaymentsController::class, 'getPayments'])
+Route::get('/myPayments', [PaymentsController::class, 'getPayments'])
     ->name('payments');
 Route::get('/createPayment', [PaymentsController::class, 'addPaymentView'])
     ->name('create_payment')->middleware('can:create, App\Models\Payment');

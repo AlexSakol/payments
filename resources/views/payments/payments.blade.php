@@ -9,20 +9,63 @@
 
     <div class="row">
 
-    <div class="dropdown col-lg-4">
-        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Категории
-        </button>
-        <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="{{route('payments')}}">Все</a></li>
-            @foreach($categories as $category)
-                <li><a class="dropdown-item" href="{{route('payments', ['category_id' => $category->id])}}">
-                        {{$category->name}}</a></li>
-            @endforeach
-        </ul>
-    </div>
+        <div class="accordion" id="accordion">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse" aria-expanded="false" aria-controls="collapse">
+                        Фильтр
+                    </button>
+                </h2>
+                <div id="collapse" class="accordion-collapse collapse" data-bs-parent="#accordion">
+                    <div class="accordion-body">
+                        <form method="GET" action="{{route('payments')}}">
+                            <div class="form-group mb-3">
+                                <label for="category">Категория</label>
+                                <select class="form-select" name="category_id" aria-label="Default select example" id="category">
+                                    <option value="0">Все</option>
+                                    @foreach($categories as $category)
+                                        <option value="{{$category->id}}">{{$category->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="start_date">Начальная дата</label>
+                                <input type="date" class="form-control" id="start_date" name="start_date">
+                            </div>
+                            <div class="form-group mb-3 mt-3">
+                                <label for="start_date">Конечная дата</label>
+                                <input type="date" class="form-control" id="end_date" name="end_date">
+                            </div>
+                            <div class="form-group">
+                                <label>Доход/расход</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="is_income" id="type" value="all" checked>
+                                    <label class="form-check-label" for="type">
+                                        Все
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="is_income" id="type" value="1">
+                                    <label class="form-check-label" for="type">
+                                        Доход
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="is_income" id="type" value="0">
+                                    <label class="form-check-label" for="type">
+                                        Расход
+                                    </label>
+                                </div>
+                            </div>
+                            <input type="submit" class="btn btn-outline-dark mt-3 mb-3" value="Фильтровать">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </div>
+
 
     <div class="table-responsive">
         <table class="table table-striped mt-3">
@@ -56,6 +99,29 @@
                             data-bs-target="#delete_payment"> Удалить </button>
                     </td>
                 </tr>
+
+                <div class="modal fade" id="delete_payment" tabindex="-1" aria-labelledby="delete_paymentLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="delete_paymentLabel">Удалить платеж</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <form method="POST" action="{{route('delete_payment', $payment)}}">
+                                @csrf
+                                @method('DELETE')
+                                <div class="modal-body">
+                                    <p>Внимание! Действие необратимо.</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <input class="btn btn-danger" type="submit" value="Удалить">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
             @endforeach
         </table>
     </div>
@@ -63,27 +129,5 @@
     <h6>Итого на странице, сумма: {{$payments->sum('price')}} руб.</h6>
         <a class="btn btn-success mt-3" href="{{route('create_payment')}}">Добавить</a>
 
-
-    <div class="modal fade" id="delete_payment" tabindex="-1" aria-labelledby="delete_paymentLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="delete_paymentLabel">Удалить платеж</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <form method="POST" action="{{route('delete_payment', $payment)}}">
-                    @csrf
-                    @method('DELETE')
-                    <div class="modal-body">
-                        <p>Внимание! Действие необратимо.</p>
-                    </div>
-                    <div class="modal-footer">
-                        <input class="btn btn-danger" type="submit" value="Удалить">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
 @endsection
+
