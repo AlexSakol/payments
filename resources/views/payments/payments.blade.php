@@ -9,7 +9,7 @@
 
     <div class="row">
 
-    <div class="dropdown">
+    <div class="dropdown col-lg-4">
         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
             Категории
         </button>
@@ -23,6 +23,7 @@
     </div>
 
     </div>
+
     <div class="table-responsive">
         <table class="table table-striped mt-3">
             <tr>
@@ -59,7 +60,7 @@
         </table>
     </div>
     {{ $payments->onEachSide(3)->links() }}
-    <h6>Итого на странице сумму: {{$payments->sum('price')}} руб.</h6>
+    <h6>Итого на странице, сумма: {{$payments->sum('price')}} руб.</h6>
         <a class="btn btn-success mt-3" href="{{route('create_payment')}}">Добавить</a>
 
 
