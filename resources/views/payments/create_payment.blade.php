@@ -15,7 +15,7 @@
                            placeholder="Введите наименование" id="name">
                 </div>
                 <div class="form-group mt-3">
-                    <label for="price">Сумма</label>
+                    <label for="price">Сумма (ввод десятичной части обязателен, разделитель - точка)</label>
                     <input class="form-control" type="text" name="price" value = "{{ old('price') }}"
                            placeholder="Введите сумму" id="price">
                 </div>
@@ -50,7 +50,7 @@
                         </label>
                     </div>
                 </div>
-                <input class="btn btn-success" type="submit" value="Добавить">
+                <input class="btn btn-success" type="submit" value="Сохранить">
             </form>
         </div>
     </div>

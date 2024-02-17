@@ -33,7 +33,7 @@ class PaymentsController extends Controller
                 $payments = $payments->where('category_id', $category_id);
             }
             return view('payments.payments',
-                ['payments' => $payments->paginate(6), 'categories' => $categories]);
+                ['payments' => $payments->paginate(5), 'categories' => $categories]);
         }
         else return redirect()->route('main');
     }

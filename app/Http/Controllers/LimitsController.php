@@ -20,7 +20,7 @@ class LimitsController extends Controller
         if($user != null)
         {
             $limits = Limit::where('user_id', $user->id);
-            return view('limits.limits', ['limits' => $limits->paginate(6)]);
+            return view('limits.limits', ['limits' => $limits->paginate(5)]);
         }
         else return redirect()->route('main');
     }

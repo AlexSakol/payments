@@ -18,8 +18,12 @@
             @endif
         @endauth
         @guest()
-        <li class="nav-item"><a href="{{route('login')}}" class="nav-link px-2 text-body-secondary">Войти</a></li>
-        <li class="nav-item"><a href="{{route('register')}}" class="nav-link px-2 text-body-secondary">Зарегистрироваться</a></li>
+        <li class="nav-item">
+            <a href="{{route('login')}}" class="nav-link px-2 text-body-secondary">Войти</a>
+        </li>
+        <li class="nav-item">
+            <a href="{{route('register')}}" class="nav-link px-2 text-body-secondary">Зарегистрироваться</a>
+        </li>
         @else
             <li class="nav-item">
                 <form method = 'POST' action="{{route('logout')}}">
@@ -28,6 +32,9 @@
                 </form>
             </li>
         @endguest
+        <li class="nav-item">
+            <a href="{{route('instruction')}}" class="nav-link px-2 text-body-secondary">Инструкция</a>
+        </li>
     </ul>
     <p class="text-center text-body-secondary">© 2024 Система контроля платежей</p>
 </footer>

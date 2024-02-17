@@ -36,7 +36,7 @@
             @foreach($payments as $payment)
                 <tr>
                     <td>{{$payment->name}}</td>
-                    <td>{{$payment->price}}</td>
+                    <td>{{$payment->price}} руб.</td>
                     <td>{{$payment->date}}</td>
                     <td>{{$payment->category->name}}</td>
                     <td>
@@ -59,8 +59,9 @@
         </table>
     </div>
     {{ $payments->onEachSide(3)->links() }}
+    <h6>Итого на странице сумму: {{$payments->sum('price')}} руб.</h6>
         <a class="btn btn-success mt-3" href="{{route('create_payment')}}">Добавить</a>
-    <br>
+
 
     <div class="modal fade" id="delete_payment" tabindex="-1" aria-labelledby="delete_paymentLabel" aria-hidden="true">
         <div class="modal-dialog">

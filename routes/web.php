@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\MainController;
+use App\Http\Controllers\PagesController;
 use App\Http\Controllers\PaymentsController;
 use App\Http\Controllers\LimitsController;
 use App\Http\Controllers\BalanceController;
@@ -19,7 +19,9 @@ use App\Http\Controllers\AdminController;
 |
 */
 
-Route::get('/', [MainController::class,'show'])->name('main');
+Route::get('/', [PagesController::class,'mainView'])->name('main');
+Route::get('/instruction', [PagesController::class, 'instruction'])->name('instruction');
+
 Route::get('/myPayments/{category_id?}', [PaymentsController::class, 'getPayments'])
     ->name('payments');
 Route::get('/createPayment', [PaymentsController::class, 'addPaymentView'])
@@ -58,4 +60,4 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::fallback([MainController::class,'show']);
+Route::fallback([PagesController::class,'show']);

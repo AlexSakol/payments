@@ -16,7 +16,7 @@
             @foreach($limits as $limit)
                 <tr>
                     <td>{{$limit->date}}</td>
-                    <td>{{$limit->price}}</td>
+                    <td>{{$limit->price}} руб.</td>
                     <td>
                         <a class="btn btn-outline-info" href="{{route('edit_limit', $limit->id)}}">
                             Редактировать</a>

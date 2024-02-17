@@ -30,8 +30,11 @@ class BalanceController extends Controller
                 $debts = $debts->whereBetween('date', [$date . '-01', $date . '-31']);
             }
             else $limit = null;
-            return view('balance.balance', ['incomes' => $incomes->sum('price'),
-                'debts' => $debts->sum('price'), 'limit' => $limit]);
+            $incomes = $incomes->sum('price');
+            $debts = $debts->sum('price');
+            $balance = $incomes-$debts;
+            return view('balance.balance', ['incomes' => $incomes, 'debts' => $debts,
+                'limit' => $limit, 'balance' => $balance]);
         }
         else return view('main');
     }

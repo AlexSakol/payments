@@ -1,7 +1,7 @@
 @extends('layouts.index')
 @section('title')Главная@endsection
 @section('content')
-    <h2 class="text-center">
+    <h2 class="text-center mb-3 mt-3">
         Система контроля платежей
     </h2>
     <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">

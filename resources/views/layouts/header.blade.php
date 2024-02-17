@@ -23,8 +23,10 @@
                             <a class="nav-link text-white" href="{{route('admin')}}">Администрирование</a>
                         </li>
                     @endif
-
                 @endauth
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{{route('instruction')}}">Инструкция</a>
+                </li>
             </ul>
             @guest
                 <a href="{{route('login')}}" class="btn btn-outline-light me-2">Войти</a>
