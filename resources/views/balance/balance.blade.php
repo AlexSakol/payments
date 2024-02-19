@@ -17,7 +17,7 @@
         <h4 style="color:red">Ваши расходы превышают доходы<h4>
     @endif
     @if($limit != null)
-        <h5>Лимит на расходы</h5> {{$balance}}
+        <h5>Лимит на расходы</h5> {{$limit->price}}
         @if($debts > $limit->price)
             <h4 style="color:red">Вы превысили лимит на расходы<h4>
         @endif
