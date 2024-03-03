@@ -8,17 +8,6 @@ use App\Http\Controllers\LimitsController;
 use App\Http\Controllers\BalanceController;
 use App\Http\Controllers\AdminController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
 Route::get('/', [PagesController::class,'mainView'])->name('main');
 Route::get('/instruction', [PagesController::class, 'instruction'])->name('instruction');
 

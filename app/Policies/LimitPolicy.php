@@ -7,9 +7,6 @@ use App\Models\Limit;
 
 class LimitPolicy
 {
-    /**
-     * Create a new policy instance.
-     */
 
     public function create(User $user)
     {

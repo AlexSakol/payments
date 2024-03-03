@@ -6,16 +6,12 @@ use App\Http\Requests\PaymentRequest;
 use App\Http\Requests\PaymentsFilterRequest;
 use App\Models\Category;
 use App\Models\Payment;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\View\View;
 
 
 class PaymentsController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('auth');

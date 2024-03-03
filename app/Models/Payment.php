@@ -21,3 +21,4 @@ class Payment extends Model
     }
 
 }
+

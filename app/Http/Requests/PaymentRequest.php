@@ -7,7 +7,7 @@ use Illuminate\Foundation\Http\FormRequest;
 class PaymentRequest extends FormRequest
 {
     /**
-     * Determine if the user is authorized to make this request.
+     * Позволяет делать запрос только авторизованному упользователю
      */
     public function authorize(): bool
     {
@@ -15,7 +15,7 @@ class PaymentRequest extends FormRequest
     }
 
     /**
-     * Get the validation rules that apply to the request.
+     * Правила валидации
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
@@ -30,6 +30,11 @@ class PaymentRequest extends FormRequest
         ];
     }
 
+    /**
+     * Сообщения об ошибках
+     *
+     * @throws \Illuminate\Validation\ValidationException
+     */
     public function messages(): array
     {
         return [

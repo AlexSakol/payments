@@ -22,35 +22,18 @@
                             Редактировать</a>
                     </td>
                     <td>
-                        <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal"
-                            data-bs-target="#delete_limit">Удалить</button>
+                        <form method="POST" action="{{route('delete_limit', $limit)}}">
+                            @csrf
+                            @method('DELETE')
+                            <input class="btn btn-outline-danger" type="submit" value="Удалить">
+                        </form>
                     </td>
                 </tr>
+
           @endforeach
         </table>
     </div>
     <a class="btn btn-success" href="{{route('create_limit')}}">Добавить</a>
 
-    <div class="modal fade" id="delete_limit" tabindex="-1" aria-labelledby="delete_limitLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="delete_limitLabel">Удалить лимит</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <form method="POST" action="{{route('delete_limit', $limit)}}">
-                    @csrf
-                    @method('DELETE')
-                    <div class="modal-body">
-                        <p>Внимание! Действие необратимо.</p>
-                    </div>
-                    <div class="modal-footer">
-                        <input class="btn btn-danger" type="submit" value="Удалить">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
 
 @endsection
