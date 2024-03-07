@@ -23,7 +23,7 @@ class PaymentRequest extends FormRequest
     {
         return [
             'name' => 'required|string|between:2,255',
-            'price' => 'required|decimal:2|between:0.01,10000000',
+            'price' => 'required|numeric|between:0,10000000',
             'date' => 'required|date|before_or_equal:2100/01/01|after_or_equal:2000/01/01',
             'category_id' => 'required|integer|min:1',
             'is_income' => 'required|bool'
@@ -42,8 +42,8 @@ class PaymentRequest extends FormRequest
             'name.string' => 'Наименование должно быть строкой',
             'name.between' => 'Наименование должно содержать от 2 до 255 символов',
             'price.required' => 'Поле "Сумма" должно быть заполнено',
-            'price.decimal' => 'Сумма должна быть в формате ХХХХХХХХ.ХХ',
-            'price.between' => 'Сумма должна быть в диапазоне от 0,01 до 10000000',
+            'price.numeric' => 'Некорректный формат суммы',
+            'price.between' => 'Сумма должна быть в диапазоне от 0 до 10000000',
             'date.required' => 'Поле "Дата" должно быть заполнено',
             'date.date' => 'Некорректный формат даты',
             'date.before_or_equal' => 'Максимальное значение даты 01.01.2100',

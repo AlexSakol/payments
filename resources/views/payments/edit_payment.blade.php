@@ -16,7 +16,7 @@
                            id="name">
                 </div>
                 <div class="form-group mt-3">
-                    <label for="price">Сумма (ввод десятичной части обязателен, разделитель - точка)</label>
+                    <label for="price">Сумма</label>
                     <input class="form-control" type="text" name="price" id="price"
                            value="{{ old('price', $payment->price)}}">
                 </div>
