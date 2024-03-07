@@ -49,4 +49,4 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::fallback([PagesController::class,'show']);
+Route::fallback([PagesController::class,'mainView']);
