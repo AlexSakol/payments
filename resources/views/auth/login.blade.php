@@ -19,7 +19,17 @@
                 <input class="form-control" type="password" id="password" name ="password"
                    required autocomplete="current-password">
             </div>
-            <div class="form-group mt-3">
+                <script src="https://www.google.com/recaptcha/api.js?render={{ env('GOOGLE_RECAPTCHA_KEY') }}"></script>
+                <script>
+                    grecaptcha.ready(function() {
+                        grecaptcha.execute('{{ env('GOOGLE_RECAPTCHA_KEY') }}', {action: 'submit'}).then(function(token) {
+                            document.getElementById('recaptchaResponse').value = token;
+                        });
+                    });
+                </script>
+                <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
+
+                <div class="form-group mt-3">
                 <input class="btn btn-primary" type="submit" value="Войти">
             </div>
         </form>

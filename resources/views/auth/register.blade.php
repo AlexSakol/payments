@@ -29,6 +29,16 @@
                     <input class="form-control" type="password" id="password_confirmation"
                            name ="password_confirmation" required autocomplete="new-password">
                 </div>
+                <script src="https://www.google.com/recaptcha/api.js?render={{ env('GOOGLE_RECAPTCHA_KEY') }}"></script>
+                <script>
+                    grecaptcha.ready(function() {
+                        grecaptcha.execute('{{ env('GOOGLE_RECAPTCHA_KEY') }}', {action: 'submit'}).then(function(token) {
+                            document.getElementById('recaptchaResponse').value = token;
+                        });
+                    });
+                </script>
+                <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
+
                 <div class="form-group mt-3">
                     <input type="submit" class="btn btn-success" value="Зарегистрироваться">
                     <a class="link-dark link-underline-light" href="{{ route('login') }}">Уже зарегистрированы?</a>
